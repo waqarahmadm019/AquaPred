@@ -1,4 +1,4 @@
-Aqueous Solubility Predictor
+Aqueous Solubility Predictor:
 This is the repo for the paper 'Attention-based Graph Neural Network for Molecular Solubility Prediction'
 HowTo
 How to download dataset and tool
