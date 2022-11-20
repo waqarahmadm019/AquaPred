@@ -19,9 +19,9 @@ Install anaconda and create conda environment<br>
 Install pytorch, pytorch_geometric and rdkit.<br>
 Run https://github.com/waqarahmadm019/AquaPred.git <br>
 The above command will download the datasets and code automatically.<br>
-## Train and test dataset boxplots
-![boxplot_solubilities](https://user-images.githubusercontent.com/8627287/202066225-2743a4d9-f24b-4e6f-bdfe-94aec19de07c.jpg)
-![boxplot_testsolubilities](https://user-images.githubusercontent.com/8627287/202066241-1cbb5b1c-e15f-49af-b175-9443c815ab21.jpg)
+
+
+![ModelFlowDiagram123](https://user-images.githubusercontent.com/8627287/202886059-3830a1e8-01c0-4b30-a7a1-51eef4f1b986.jpg)
 
 ## Data Preprocessing
 ![preprocessing_diagram](https://user-images.githubusercontent.com/8627287/202065703-4ff03521-cbf0-480a-a2a6-e10cad6772c7.jpg)
