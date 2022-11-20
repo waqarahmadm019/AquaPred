@@ -22,13 +22,19 @@ The above command will download the datasets and code automatically.<br>
 
 
 ![ModelFlowDiagram123](https://user-images.githubusercontent.com/8627287/202886059-3830a1e8-01c0-4b30-a7a1-51eef4f1b986.jpg)
-
-## Data Preprocessing
-![preprocessing_diagram](https://user-images.githubusercontent.com/8627287/202065703-4ff03521-cbf0-480a-a2a6-e10cad6772c7.jpg)
-## Model Architecture
-![FlowDiaGram](https://user-images.githubusercontent.com/8627287/202065794-edf894f7-e91f-4e9a-beb4-67c4d02f3b5f.jpg)
-
-## Run the code
-Go to downloaded directory.<br>
-Run 'Training K Fold.ipynb' notebook.<br>
+## Steps how to create folds.
+from folds import foldscreator<br>
+traindf = pd.read_csv('New_fold/solubility.csv')<br>
+foldscreator.createFoldsData(n_splits, 'smiles', 'y')<br>
+## Model training. GraphNetDriver.py
+train_loader   = DataLoader(train_data,batch_size=TRAIN_BATCH_SIZE,shuffle=True)<br>
+test_loader  = DataLoader(test_data,batch_size=TRAIN_BATCH_SIZE,shuffle=True)<br>
+model = AttentionConvNet().to(device)<br>
+optimizer = torch.optim.Adam(model.parameters(), lr=learning_rate,
+                             weight_decay=weight_decay)<br>
+train(model, optimizer,train_loader)<br>
+test(test_loader, model)<br>
+## test model TestModel.py
+model_file_name = 'saved_models/wholetrainmodel_6.model'.<br>
+_,test_rmse, true, prediction = predicting(noveltest_loader, model).<br>
 
