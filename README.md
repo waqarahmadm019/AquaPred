@@ -14,18 +14,17 @@ model outperformed on 62 anticancer compounds with metric Pearson correlation R2
 and root mean square error (RMSE) values of 0.52 and 0.61, respectively. AS can be
 improved by graph algorithm improvement or more molecular properties addition.
 
+## Model Flow Diagram
+![ModelFlowDiagram123](https://user-images.githubusercontent.com/8627287/202886059-3830a1e8-01c0-4b30-a7a1-51eef4f1b986.jpg)
 ## How to download dataset and tool
 Run https://github.com/waqarahmadm019/AquaPred.git <br>
 The above command will download the datasets and code automatically.<br>
-
-## ModelFlowDiagram
-![ModelFlowDiagram123](https://user-images.githubusercontent.com/8627287/202886059-3830a1e8-01c0-4b30-a7a1-51eef4f1b986.jpg)
 ### Setup environment
-conda create -n env_name 
-conda activate env_name
-conda install -c pytorch pytorch
-conda install -c conda-forge pytorch_geometric
-conda install -c conda-forge rdkit
+conda create -n env_name <br> 
+conda activate env_name <br>
+conda install -c pytorch pytorch <br>
+conda install -c conda-forge pytorch_geometric <br>
+conda install -c conda-forge rdkit <br>
 
 ## test model TestModel.py
 python TestModel.py
