@@ -16,6 +16,7 @@ improved by graph algorithm improvement or more molecular properties addition.
 
 ## Model Flow Diagram
 ![ModelFlowDiagram123](https://user-images.githubusercontent.com/8627287/202886059-3830a1e8-01c0-4b30-a7a1-51eef4f1b986.jpg)
+
 ## How to download dataset and tool
 Run https://github.com/waqarahmadm019/AquaPred.git <br>
 The above command will download the datasets and code automatically.<br>
