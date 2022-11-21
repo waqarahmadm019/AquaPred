@@ -17,16 +17,26 @@ improved by graph algorithm improvement or more molecular properties addition.
 ## Model Flow Diagram
 ![ModelFlowDiagram123](https://user-images.githubusercontent.com/8627287/202886059-3830a1e8-01c0-4b30-a7a1-51eef4f1b986.jpg)
 
-## How to download dataset and tool
-Run https://github.com/waqarahmadm019/AquaPred.git <br>
-The above command will download the datasets and code automatically.<br>
-### Setup environment
-conda create -n env_name <br> 
-conda activate env_name <br>
-conda install -c pytorch pytorch <br>
-conda install -c conda-forge pytorch_geometric <br>
-conda install -c conda-forge rdkit <br>
+
+## Datasets
+You can download the training and testing datasets from 
+https://github.com/waqarahmadm019/AquaPred/tree/main/datasets
+
+## Usage
+1. Clone this repository
+git clone https://github.com/waqarahmadm019/AquaPred
+cd AquaPred
+
+2. Setup Environment
+```
+conda create -n solubility --python=3.8 
+conda activate solubility 
+conda install -c pytorch pytorch=1.10.1
+conda install -c conda-forge pytorch_geometric=2.0.3 
+conda install -c conda-forge rdkit 
+```
 
 ## test model TestModel.py
 python TestModel.py
 
+This code will use testset_novel.csv dataset
