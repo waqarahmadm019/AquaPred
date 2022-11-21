@@ -1,26 +1,49 @@
 import torch
+import torch.nn as nn
 import torch.nn.functional as F
-from torch.nn import Linear, Dropout
-from torch_geometric.nn import GATv2Conv, global_add_pool
+from torch.nn import Sequential, Linear, ReLU
+from torch_geometric.nn import GATConv
+from torch_geometric.nn import global_max_pool as gmp
 
+# GAT  model
+class GATNet(torch.nn.Module):
+    def __init__(self, num_features=112, n_output=1,n_filters=32, embed_dim=128, output_dim=128, dropout=0.2):
+        super(GATNet, self).__init__()
 
-class GAT(torch.nn.Module):
-  """Graph Attention Network"""
-  def __init__(self, dim_in=92, dim_h=91, dim_out=1, heads=8):
-    super().__init__()
-    self.gat1 = GATv2Conv(dim_in, dim_h, heads=heads)
-    self.gat2 = GATv2Conv(dim_h*heads, dim_out, heads=1)
-    self.optimizer = torch.optim.Adam(self.parameters(),
-                                      lr=0.005,
-                                      weight_decay=5e-4)
+        # graph layers
+        self.gcn1 = GATConv(num_features, num_features, heads=10, dropout=dropout)
+        self.gcn2 = GATConv(num_features * 10, output_dim, dropout=dropout)
+        self.fc_g1 = nn.Linear(output_dim, output_dim)
 
-  def forward(self, data):
-    x, edge_index, batch,edge_attr = data.x, data.edge_index, data.batch,data.edge_attr
-    h = F.dropout(x, p=0.6, training=self.training)
-    h = self.gat1(x, edge_index)
-    h = F.elu(h)
-    h = F.dropout(h, p=0.6, training=self.training)
-    h = self.gat2(h, edge_index)
-    h = global_add_pool(h, batch)
-    return h
+        # combined layers
+        self.fc1 = nn.Linear(output_dim, 64)
+        self.fc2 = nn.Linear(64, 32)
+        self.out = nn.Linear(32, n_output)
 
+        # activation and regularization
+        self.relu = nn.ReLU()
+        self.dropout = nn.Dropout(dropout)
+
+    def forward(self, data):
+        # graph input feed-forward
+        x, edge_index, batch = data.x.float(), data.edge_index, data.batch
+
+        x = F.dropout(x, p=0.2, training=self.training)
+        x = F.elu(self.gcn1(x, edge_index))
+        x = F.dropout(x, p=0.2, training=self.training)
+        x = self.gcn2(x, edge_index)
+        x = self.relu(x)
+        x = gmp(x, batch)          # global max pooling
+        x = self.fc_g1(x)
+        x = self.relu(x)
+
+       
+        # add some dense layers
+        xc = self.fc1(x)
+        xc = self.relu(xc)
+        xc = self.dropout(xc)
+        xc = self.fc2(xc)
+        xc = self.relu(xc)
+        xc = self.dropout(xc)
+        out = self.out(xc)
+        return out
