@@ -24,8 +24,10 @@ https://github.com/waqarahmadm019/AquaPred/tree/main/datasets
 
 ## Usage
 1. Clone this repository
+```
 git clone https://github.com/waqarahmadm019/AquaPred
 cd AquaPred
+```
 
 2. Setup Environment
 ```
