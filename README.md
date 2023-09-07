@@ -1,5 +1,5 @@
 # Aqueous Solubility Predictor
-This is the repo for the paper 'Attention-based Graph Neural Network for Molecular Solubility Prediction'
+This is the repo for the paper [Attention-based Graph Neural Network for Molecular Solubility Prediction](https://pubs.acs.org/doi/10.1021/acsomega.2c06702)
 ## Abstract
 Drug discovery research is aimed at the discovery of new medications. Solubility
 is an important physicochemical property in drug development. Active pharmaceutical ingredients (APIs) are essential substances for high drug efficacy. During DD
