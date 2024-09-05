@@ -147,7 +147,7 @@ optimizer = torch.optim.Adam(model.parameters(), lr=learning_rate,
 
 model_file_name = 'wholetrainmodel.model'
 checkpoint = torch.load(model_file_name, map_location=torch.device(device))
-model.load_state_dict(checkpoint)
+model.load_state_dict(checkpoint, strict=False)
 #     train_data = Molecule_data(root='data', dataset='train_data_set_fold_'+str(fold),y=None,smile_graph=None,smiles=None)
 test_loss,test_rmse, true, prediction = predicting(noveltest_loader, model)
 
