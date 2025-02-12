@@ -15,7 +15,7 @@ class AttentionConvNet(torch.nn.Module):
                  dropout=0.256740503759802):
 # 0.126740503759802
         super(AttentionConvNet, self).__init__()
-        # self.sage = SAGEConv(91, 64, True, bias=True)
+        self.sage = SAGEConv(91, 64, True, bias=True)
         #self.GraphNorm = DiffGroupNorm(in_features,2)
         self.linear = nn.Sequential(nn.Linear(in_features,80), nn.ReLU(),nn.Linear(80,72))
         self.dropout = dropout
